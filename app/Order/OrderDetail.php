@@ -3,19 +3,18 @@
 namespace App\Order;
 
 use Illuminate\Support\Str;
-use App\Billing\BankPaymentGateway;
-
+use App\Billing\PaymentGatewayContract;
 
 class OrderDetail
 {
-  private $bankPaymentGateway;
-  public function __construct(BankPaymentGateway $bankPaymentGateway)
+  private $paymentGatewayContract;
+  public function __construct(PaymentGatewayContract $paymentGatewayContract)
   {
-      $this->bankPaymentGateway = $bankPaymentGateway;
+      $this->paymentGatewayContract = $paymentGatewayContract;
   }
 
   public function all(){
-    $this->bankPaymentGateway->setDiscount(500);
+    $this->paymentGatewayContract->setDiscount(500);
 
     return [
         'name'=>'sonu jha',
